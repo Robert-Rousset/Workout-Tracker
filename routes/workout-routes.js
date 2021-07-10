@@ -11,4 +11,29 @@ router.get("/workouts", async (req, res) => {
   }
 });
 
+router.post("/workouts", async (req, res) => {
+  try {
+    const workout = await db.Workout.create(req.body);
+    res.json(workout);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
+router.put("/workouts/:id", async (req, res) => {
+  try {
+    const updateData = await db.Workout.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $push: {
+          exercises: req.body,
+        },
+      }
+    );
+    res.json(updateData);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 module.exports = router;
