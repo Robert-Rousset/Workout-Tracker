@@ -12,22 +12,22 @@ const WorkoutSchema = new Schema({
   },
   weight: {
     type: Number,
-    required: true,
   },
   sets: {
     type: Number,
-    required: true,
   },
   reps: {
     type: Number,
-    required: true,
   },
   duration: {
     type: Number,
     required: true,
   },
+  distance: {
+    type: Number,
+  },
 });
 
-const Workout = mongoos.model("Workout", WorkoutSchema);
+const Workout = mongoose.model("Workout", WorkoutSchema);
 
 module.exports = Workout;
