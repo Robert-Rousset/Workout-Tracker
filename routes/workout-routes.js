@@ -11,6 +11,15 @@ router.get("/workouts", async (req, res) => {
   }
 });
 
+router.get("/workouts/range", async (req, res) => {
+  try {
+    const allWorkouts = await db.Workout.find();
+    res.json(allWorkouts);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 router.post("/workouts", async (req, res) => {
   try {
     const workout = await db.Workout.create(req.body);
