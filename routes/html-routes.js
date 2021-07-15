@@ -9,4 +9,8 @@ router.get("/stats", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/stats.html"));
 });
 
+router.get("/favicon.ico", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/images/fitness-favicon.png"));
+});
+
 module.exports = router;
